@@ -35,7 +35,7 @@ Mailbox authentication also sits behind the trait. Gmail and Microsoft 365 accep
 
 Other servers that were ruled out:
 
-- **Mailpit** only accepts SMTP and has no IMAP or POP3 to read from.
+- **Mailpit** only accepts SMTP and has no IMAP or POP3 from which to read.
 - **Stalwart** is a full Rust mail server that is open source, but it takes more setup than a test needs.
 - **Dovecot with Postfix** takes more setup still.
 

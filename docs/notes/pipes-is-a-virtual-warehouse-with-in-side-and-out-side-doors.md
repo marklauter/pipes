@@ -21,8 +21,8 @@ Pipes is modeled on a retail distribution warehouse, such as Macy's. One truck o
 
 The warehouse terms map onto ports and adapters:
 
-- The in-side is a port: one trait that every arriving digital artifact passes through.
-- The out-side is a port: one trait that every departing digital artifact passes through.
+- The in-side is a port: one trait through which every arriving digital artifact passes.
+- The out-side is a port: one trait through which every departing digital artifact passes.
 - Each door is implemented by an adapter of its side's port. Adding a door means adding an adapter, and routing doesn't change.
 
 The two ports are the first plugin points. The plugin pipeline is the third.

@@ -9,9 +9,9 @@ A connection between pipes and an external system, for passing digital artifacts
 
 ## Examples
 
-- A watched folder that files are dropped into.
+- A watched folder into which files are dropped.
 - An IMAP mailbox whose attachments pipes collects.
-- A folder that departing files are written to.
+- A folder to which departing files are written.
 
 ## Rationale
 

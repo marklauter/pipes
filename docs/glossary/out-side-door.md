@@ -12,7 +12,7 @@ A door through which digital artifacts depart.
 
 ## Examples
 
-- A destination folder that departing files are written to.
+- A destination folder to which departing files are written.
 - A partner's SFTP server.
 
 ## Rationale

@@ -34,7 +34,7 @@ The route map steers in-flight digital artifacts, and it connects doors, not fol
 - **Doors.** Each door has a name, a side (in or out), an adapter type, and that adapter's settings.
 - **Routes.** Each route connects an in-side door to an out-side door by name. Fan-out, as one truck of shoes fills many trucks, is several routes from the same in-side door.
 
-The build order is in [[pipes-builds-the-core-first-then-folder-and-email-doors]].
+The build order is in [[roadmap]].
 
 ## Open
 

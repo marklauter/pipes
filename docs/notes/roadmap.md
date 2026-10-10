@@ -1,5 +1,5 @@
 ---
-title: Pipes builds the core first, then folder and email doors
+title: Roadmap
 type: note
 summary: "Build order: the core (ports, route map, attention-queue fallback), folder doors, email door, optional native FTP/SFTP, then the plugin pipeline."
 tags: [roadmap]
@@ -7,7 +7,7 @@ created: 2026-10-10
 status: evolving
 ---
 
-# Pipes builds the core first, then folder and email doors
+# Roadmap
 
 Pipes routes digital artifacts between external systems. Digital artifacts arrive through in-side doors (FTP/SFTP, email, web upload, folder watch), are in flight while the route map steers them, and depart through out-side doors. Every door plugs into the same core, so the core comes first and the doors follow in order of complexity. The model is in [[pipes-is-a-virtual-warehouse-with-in-side-and-out-side-doors]], and the terms are in `docs/glossary/`.
 

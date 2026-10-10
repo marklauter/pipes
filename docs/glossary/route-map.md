@@ -1,12 +1,12 @@
 ---
 title: route map
 type: definition
-summary: "A set of routes, for steering the files on the belt."
+summary: "A set of routes, for steering in-flight files."
 status: evolving
 has-a: "[[route]]"
 ---
 
-A set of routes, for steering the files on the belt.
+A set of routes, for steering in-flight files.
 
 ## Rationale
 

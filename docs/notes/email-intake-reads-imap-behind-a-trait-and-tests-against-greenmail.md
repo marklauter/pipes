@@ -22,7 +22,7 @@ A `MailSource` trait hides the mailbox. It has two operations:
 - `fetch_unseen()` returns each new message as raw RFC 822 bytes.
 - `mark_processed(uid)` marks a message as handled.
 
-Attachment extraction takes those bytes and returns the attachments. It doesn't depend on a server, and most of the email logic lives there. The email watcher is an in-side door. Each extracted attachment goes onto the same belt as files from the folder watcher, and the route map sends it to the out-side doors routed from that email door. The mailbox address, host, and credentials are settings of the door.
+Attachment extraction takes those bytes and returns the attachments. It doesn't depend on a server, and most of the email logic lives there. The email watcher is an in-side door. Each extracted attachment is in flight like a file from the folder watcher, and the route map sends it to the out-side doors routed from that email door. The mailbox address, host, and credentials are settings of the door.
 
 Mailbox authentication also sits behind the trait. Gmail and Microsoft 365 accept only OAuth2 (XOAUTH2) for IMAP, not passwords, so OAuth2 can be added later without changing callers.
 

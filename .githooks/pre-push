@@ -1,0 +1,7 @@
+#!/bin/sh
+# The slow CI checks, before each push: coverage and the dependency audit.
+# Needs cargo-llvm-cov and cargo-audit installed. Mutation testing is too
+# slow for a push, so it runs in CI only.
+set -e
+cargo llvm-cov --workspace --locked --fail-under-lines 95 --summary-only
+cargo audit --deny warnings

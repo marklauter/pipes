@@ -15,4 +15,4 @@ An out-side door for digital artifacts awaiting human attention.
 
 ## Rationale
 
-In a warehouse this is the exceptions area, where goods that can't be routed wait for a person. A route can name it, and it is the fallback when no route applies or a departure fails. A released digital artifact arrives again through an in-side door.
+The warehouse equivalent is the exceptions area. A route can name it, and it is the fallback when no route applies or a departure fails. A released digital artifact arrives again through an in-side door.

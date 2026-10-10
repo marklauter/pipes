@@ -14,4 +14,4 @@ A service for routing digital artifacts between external systems.
 
 ## Rationale
 
-The kernel names no door, route or sorter, because those are defined in terms of pipes. Like a cross-dock warehouse, pipes passes digital artifacts straight through and keeps none.
+The kernel names no door, route or sorter, because those are defined in terms of pipes. Pipes passes digital artifacts straight through and stores none.

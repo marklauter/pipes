@@ -9,7 +9,7 @@ status: evolving
 
 # Pipes is a virtual warehouse with in-side and out-side doors
 
-Pipes is modeled on a retail distribution warehouse, such as Macy's. One truck of shoes arrives at the in-side. A sorter diverts the shoes across many trucks waiting at the out-side. Logistics calls this cross-docking: goods are routed straight through rather than stored. Pipes does the same with digital artifacts.
+Pipes is modeled on a cross-dock warehouse. Goods arrive at in-side doors, a sorter diverts them, and they leave through out-side doors without being stored. Pipes applies this model to digital artifacts.
 
 ## Parts
 

@@ -1,0 +1,147 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+  RUSTFLAGS: -D warnings
+  RUSTDOCFLAGS: -D warnings
+
+jobs:
+  # The jobs below run only when the commits change Rust code, its build
+  # settings or this pipeline. Runner minutes are limited.
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      rust: ${{ steps.rust.outputs.changed }}
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        fetch-depth: 0
+    - id: rust
+      uses: ./.github/actions/changes
+      with:
+        pattern: '\.rs$|(^|/)Cargo\.(toml|lock)$|^\.cargo/|^rust-toolchain\.toml$|^\.github/(workflows/rust\.yml|actions/)'
+
+  format:
+    needs: changes
+    if: needs.changes.outputs.rust == 'true'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - uses: ./.github/actions/setup-rust
+      with:
+        components: rustfmt
+
+    - name: Verify formatting
+      run: cargo fmt --all --check
+
+  lint:
+    needs: changes
+    if: needs.changes.outputs.rust == 'true'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - uses: ./.github/actions/setup-rust
+      with:
+        components: clippy
+
+    - name: Clippy
+      run: cargo clippy --workspace --all-targets --all-features --locked
+
+    - name: Docs
+      run: cargo doc --workspace --no-deps --locked
+
+  test:
+    needs: changes
+    if: needs.changes.outputs.rust == 'true'
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+        profile: [ dev, release ]
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - uses: ./.github/actions/setup-rust
+
+    - name: Build
+      run: cargo build --workspace --all-targets --locked --profile ${{ matrix.profile }}
+
+    - name: Test
+      run: cargo test --workspace --locked --profile ${{ matrix.profile }}
+
+  coverage:
+    needs: changes
+    if: needs.changes.outputs.rust == 'true'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - uses: ./.github/actions/setup-rust
+      with:
+        components: llvm-tools-preview
+    - uses: taiki-e/install-action@861a07ce7084f55488e375df125cdc99bba60eb7 # v2.87.23
+      with:
+        tool: cargo-llvm-cov@0.9.1
+
+    - name: Coverage (fails under 95% of lines)
+      run: cargo llvm-cov --workspace --locked --fail-under-lines 95
+
+  audit:
+    needs: changes
+    if: needs.changes.outputs.rust == 'true'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+    - uses: taiki-e/install-action@861a07ce7084f55488e375df125cdc99bba60eb7 # v2.87.23
+      with:
+        tool: cargo-audit@0.22.2
+
+    - name: Audit dependencies against the RustSec advisory database
+      run: cargo audit --deny warnings
+
+  mutants:
+    needs: changes
+    if: needs.changes.outputs.rust == 'true'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        fetch-depth: 0
+    - uses: ./.github/actions/setup-rust
+    - uses: taiki-e/install-action@861a07ce7084f55488e375df125cdc99bba60eb7 # v2.87.23
+      with:
+        tool: cargo-mutants@27.1.0
+
+    # Only the lines a pull request changes, so the existing survivors don't
+    # block it, and only when it changes Rust code or its build settings.
+    - name: Mutation testing (fails when a mutant of changed code survives)
+      if: github.event_name == 'pull_request'
+      run: |
+        if ! git diff --name-only origin/${{ github.base_ref }}... | grep -Eq '\.rs$|(^|/)Cargo\.(toml|lock)$|^\.cargo/'; then
+          echo "No Rust changes, skipping mutation testing"
+          exit 0
+        fi
+        git diff origin/${{ github.base_ref }}... > pr.diff
+        cargo mutants --workspace --in-diff pr.diff -- --locked
+
+  # The single required status check: the ruleset names this job, not the
+  # matrix legs. Skipped jobs pass only when there were no Rust changes.
+  passed:
+    if: always()
+    needs: [ changes, format, lint, test, coverage, audit, mutants ]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Require every job to succeed
+      if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') || (needs.changes.outputs.rust != 'false' && contains(needs.*.result, 'skipped'))
+      run: exit 1

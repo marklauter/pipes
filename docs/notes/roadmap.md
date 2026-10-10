@@ -19,9 +19,9 @@ Pipes routes digital artifacts between external systems. Digital artifacts arriv
    - The config: the doors, each with its adapter type and settings, and the route map between them. A parser validates it and reports where each bad entry is.
    - Fan-out: one digital artifact departs through every out-side door its routes name.
    - The fallback: a digital artifact with no route, or whose departure failed, departs to the [[attention-queue]].
-2. **Folder doors and the first runnable service.** A folder-watch in-side door, built on the `notify` crate, and a folder-write out-side door. The attention-queue starts as a folder-write door. A service binary loads the route map and runs the doors. FTP/SFTP and web upload use the folder-watch door at first: a standard server (vsftpd, OpenSSH SFTP) or the upload handler writes into the watched folder. A file arrives only after its writer has finished with it.
-3. **Email door.** An in-side door that reads a mailbox over IMAP. Each attachment arrives as its own digital artifact. The design is in [[email-door-reads-imap-behind-a-trait-and-tests-against-greenmail]].
-4. **Native FTP/SFTP doors (optional).** Pipes runs its own FTP or SFTP server, so uploads arrive without a folder in between. Build these only if an external server proves inadequate.
+2. **Folder doors and the first runnable service.** A folder-watch in-side door, built on the `notify` crate, and a folder-write out-side door. The attention-queue starts as a folder-write door. A service binary loads the config and runs the doors. FTP/SFTP and web upload use the folder-watch door at first: a standard server (vsftpd, OpenSSH SFTP) or the upload handler writes into the watched folder. A file arrives only after its writer has finished with it.
+3. **Email door.** An in-side door that reads a mailbox over IMAP. Each attachment arrives as its own digital artifact. The design is in [[email-adapter-reads-imap-behind-a-trait-and-tests-against-greenmail]].
+4. **Native FTP/SFTP doors (optional).** Pipes runs its own FTP or SFTP server, so uploads arrive with no intermediate folder. Build these only if an external server proves inadequate.
 5. **Plugin pipeline.** Plugin steps that transform an in-flight digital artifact or wrap it in an envelope.
 
 ## Open

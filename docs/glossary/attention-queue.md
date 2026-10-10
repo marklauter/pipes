@@ -10,8 +10,8 @@ An out-side door for digital artifacts awaiting human attention.
 
 ## Examples
 
-- A review folder where a person checks digital artifacts that no route names.
-- A queue in an issue tracker where each failed departure opens a ticket.
+- A folder-write door to a `review` folder, where a person checks digital artifacts that no route names.
+- An issue-tracker door that opens a ticket for each failed departure.
 
 ## Rationale
 

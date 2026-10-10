@@ -12,7 +12,9 @@ A door through which digital artifacts arrive.
 
 ## Examples
 
-- FTP/SFTP, email, web upload, and folder watch.
+- A folder-watch door on the `scans` folder.
+- An email door on the `invoices` mailbox.
+- A web upload door.
 
 ## Rationale
 

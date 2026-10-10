@@ -1,11 +1,11 @@
 ---
 title: in-flight
 type: definition
-summary: "The state of a digital artifact between its arrival at an in-side door and its last departure."
+summary: "The state of a digital artifact between its arrival through an in-side door and its last departure."
 status: evolving
 ---
 
-The state of a digital artifact between its arrival at an in-side door and its last departure.
+The state of a digital artifact between its arrival through an in-side door and its last departure.
 
 ## Examples
 

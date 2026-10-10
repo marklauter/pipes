@@ -12,8 +12,8 @@ A door through which digital artifacts depart.
 
 ## Examples
 
-- A destination folder to which departing files are written.
-- A partner's SFTP server.
+- A folder-write door to the `accounting` folder.
+- An SFTP door to a partner's server.
 
 ## Rationale
 

@@ -4,3 +4,10 @@ version.workspace = true
 edition.workspace = true
 
 [dependencies]
+
+[dev-dependencies]
+async-imap = { version = "0.12.0", default-features = false, features = ["runtime-tokio"] }
+futures = "0.3.34"
+lettre = { version = "0.11.23", default-features = false, features = ["builder", "smtp-transport", "tokio1"] }
+mail-parser = "0.11.9"
+tokio = { version = "1.53.2", features = ["macros", "rt-multi-thread", "net", "time"] }

@@ -14,7 +14,7 @@ Pipes is modeled on a cross-dock warehouse. Goods arrive at in-side doors, a sor
 ## Parts
 
 - **[[in-side-door|In-side doors]]** are where digital artifacts arrive. The known kinds are FTP/SFTP servers, mailboxes, web upload endpoints, and watched folders.
-- **In flight** is the state of a digital artifact between its arrival and its last departure. The plugin pipeline transforms or wraps in-flight digital artifacts.
+- **[[in-flight|In flight]]** is the state of a digital artifact between its arrival and its last departure. The plugin pipeline transforms or wraps in-flight digital artifacts.
 - **The [[sorter]]** diverts in-flight digital artifacts to out-side doors by the [[sort-plan]].
 - **[[out-side-door|Out-side doors]]** are where digital artifacts depart. The known kinds are folders and the [[attention-queue]], where digital artifacts wait for a person.
 

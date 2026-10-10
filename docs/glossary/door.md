@@ -15,4 +15,4 @@ A delivery mechanism for passing digital artifacts between pipes and an external
 
 ## Rationale
 
-The term comes from warehouse loading doors. "Dock" and "connection" lost. A folder counts because pipes can watch it. Doors are implemented with hexagonal architecture, as [[pipes-is-a-virtual-warehouse-with-in-side-and-out-side-doors]] describes.
+The term comes from warehouse loading doors. "Dock" and "connection" lost. A folder counts, because digital artifacts can be dropped into it.

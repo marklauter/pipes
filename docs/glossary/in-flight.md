@@ -1,11 +1,11 @@
 ---
 title: in-flight
 type: definition
-summary: "The state of a file between its arrival at an in-side door and its departure through every out-side door its routes name."
+summary: "The state of a digital artifact between its arrival at an in-side door and its departure through every out-side door its routes name."
 status: evolving
 ---
 
-The state of a file between its arrival at an in-side door and its departure through every out-side door its routes name.
+The state of a digital artifact between its arrival at an in-side door and its departure through every out-side door its routes name.
 
 ## Examples
 
@@ -13,4 +13,4 @@ The state of a file between its arrival at an in-side door and its departure thr
 
 ## Rationale
 
-"Belt" lost. It named a mechanism in the warehouse, and the domain needs only the state of the file between doors. The plugin pipeline acts on in-flight files.
+"Belt" lost. It named a mechanism in the warehouse, and the domain needs only the state of the digital artifact between doors. The plugin pipeline acts on in-flight digital artifacts.

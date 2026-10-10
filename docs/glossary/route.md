@@ -1,14 +1,14 @@
 ---
 title: route
 type: definition
-summary: "A pairing of an in-side door with an out-side door, for sending the files that arrive at the first to depart through the second."
+summary: "A pairing of an in-side door with an out-side door, for sending the digital artifacts that arrive at the first to depart through the second."
 status: evolving
 has-a:
   - "[[in-side-door]]"
   - "[[out-side-door]]"
 ---
 
-A pairing of an in-side door with an out-side door, for sending the files that arrive at the first to depart through the second.
+A pairing of an in-side door with an out-side door, for sending the digital artifacts that arrive at the first to depart through the second.
 
 ## Examples
 

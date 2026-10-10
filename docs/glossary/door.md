@@ -1,11 +1,11 @@
 ---
 title: door
 type: definition
-summary: "A connection between pipes and an external system, for passing files across the pipes boundary."
+summary: "A connection between pipes and an external system, for passing digital artifacts across the pipes boundary."
 status: evolving
 ---
 
-A connection between pipes and an external system, for passing files across the pipes boundary.
+A connection between pipes and an external system, for passing digital artifacts across the pipes boundary.
 
 ## Examples
 

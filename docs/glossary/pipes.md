@@ -1,11 +1,11 @@
 ---
 title: pipes
 type: definition
-summary: "A service for routing files between external systems."
+summary: "A service for routing digital artifacts between external systems."
 status: evolving
 ---
 
-A service for routing files between external systems.
+A service for routing digital artifacts between external systems.
 
 ## Examples
 
@@ -14,4 +14,4 @@ A service for routing files between external systems.
 
 ## Rationale
 
-The kernel names no door or route, because door, route and route map are defined in terms of pipes, and naming them here would make the definitions circular. Pipes works like a cross-dock warehouse: files pass straight through and pipes doesn't keep them.
+The kernel names no door or route, because door, route and route map are defined in terms of pipes, and naming them here would make the definitions circular. Pipes works like a cross-dock warehouse: digital artifacts pass straight through and pipes doesn't keep them.

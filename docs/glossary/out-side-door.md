@@ -1,18 +1,19 @@
 ---
 title: out-side door
 type: definition
-summary: "A door for digital artifacts to depart through."
+summary: "A door through which digital artifacts depart."
 status: evolving
 is-a: "[[door]]"
 disjoint-with:
   - "[[in-side-door]]"
 ---
 
-A door for digital artifacts to depart through.
+A door through which digital artifacts depart.
 
 ## Examples
 
-- Writing a file to a folder.
+- A destination folder that departing files are written to.
+- A partner's SFTP server.
 
 ## Rationale
 

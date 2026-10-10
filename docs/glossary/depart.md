@@ -3,8 +3,6 @@ title: depart
 type: definition
 summary: "To leave pipes through an out-side door."
 status: evolving
-disjoint-with:
-  - "[[arrive]]"
 ---
 
 To leave pipes through an out-side door.

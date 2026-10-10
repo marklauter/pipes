@@ -3,8 +3,6 @@ title: adapter
 type: definition
 summary: "A component for converting between a port and one external technology."
 status: evolving
-disjoint-with:
-  - "[[port]]"
 ---
 
 A component for converting between a port and one external technology.

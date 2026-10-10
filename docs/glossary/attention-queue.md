@@ -10,9 +10,8 @@ An out-side door for digital artifacts awaiting human attention.
 
 ## Examples
 
-- A route that sends every digital artifact from a partner's SFTP door to review.
-- A digital artifact that arrived through an in-side door that no route names.
-- A digital artifact whose departure through another out-side door failed.
+- A review folder where a person checks digital artifacts that no route names.
+- A queue in an issue tracker where each failed departure opens a ticket.
 
 ## Rationale
 

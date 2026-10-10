@@ -3,8 +3,6 @@ title: port
 type: definition
 summary: "An interface of an application, for one purposeful conversation with the world outside it."
 status: evolving
-disjoint-with:
-  - "[[adapter]]"
 ---
 
 An interface of an application, for one purposeful conversation with the world outside it.
@@ -20,7 +18,7 @@ The term comes from Alistair Cockburn's Ports and Adapters pattern, also called 
 
 Cockburn separates driving ports, through which the outside world calls the application, from driven ports, through which the application calls the outside world. The in-side port is a driving port. The out-side port is a driven port.
 
-Port and adapter are architecture terms, not warehouse terms. In the warehouse language, each side of pipes is a port, and each [[door]] is implemented by an adapter.
+Port and adapter are architecture terms, not warehouse terms. Each side of pipes corresponds to a port, and each [[door]] is implemented by an adapter.
 
 ## References
 

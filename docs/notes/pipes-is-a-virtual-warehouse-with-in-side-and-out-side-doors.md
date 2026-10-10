@@ -1,7 +1,7 @@
 ---
 title: Pipes is a virtual warehouse with in-side and out-side doors
 type: note
-summary: "Digital artifacts arrive through in-side doors, are in flight while the route map steers them, and depart through out-side doors. Each side is a port, and each door is an adapter."
+summary: "Digital artifacts arrive through in-side doors, are in flight while the route map steers them, and depart through out-side doors. Each side is a port, and each door is implemented by an adapter."
 tags: [architecture, domain]
 created: 2026-10-10
 status: evolving
@@ -14,7 +14,7 @@ Pipes is modeled on a retail distribution warehouse, such as Macy's. One truck o
 ## Parts
 
 - **In-side doors** are where digital artifacts arrive. The known in-side doors are FTP/SFTP, email, web upload, and folder watch.
-- **In flight** is the state of a digital artifact between the door it arrived through and the out-side doors the route map assigns. The plugin pipeline transforms or wraps in-flight digital artifacts.
+- **In flight** is the state of a digital artifact between its arrival and its last departure. The plugin pipeline transforms or wraps in-flight digital artifacts.
 - **Out-side doors** are where digital artifacts depart. The known out-side doors are folder write and the [[attention-queue]], where digital artifacts wait for a person.
 
 ## Code shape
@@ -23,9 +23,9 @@ The warehouse terms map onto ports and adapters:
 
 - The in-side is a port: one trait that every arriving digital artifact passes through.
 - The out-side is a port: one trait that every departing digital artifact passes through.
-- Each door is an adapter that implements its side's port. Adding a door means adding an adapter, and routing doesn't change.
+- Each door is implemented by an adapter of its side's port. Adding a door means adding an adapter, and routing doesn't change.
 
-The two ports are the first plug-in points. The plugin pipeline is the third.
+The two ports are the first plugin points. The plugin pipeline is the third.
 
 ## Route map
 
@@ -35,7 +35,3 @@ The route map steers in-flight digital artifacts, and it connects doors, not fol
 - **Routes.** Each route connects an in-side door to an out-side door by name. Fan-out, as one truck of shoes fills many trucks, is several routes from the same in-side door.
 
 The build order is in [[roadmap]].
-
-## Open
-
-- Which out-side doors are needed beyond folder write and the attention-queue.

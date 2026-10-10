@@ -3,8 +3,6 @@ title: arrive
 type: definition
 summary: "To enter pipes through an in-side door."
 status: evolving
-disjoint-with:
-  - "[[depart]]"
 ---
 
 To enter pipes through an in-side door.

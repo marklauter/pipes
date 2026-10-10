@@ -1,17 +1,19 @@
 ---
 title: attention-queue
 type: definition
-summary: "A queue of digital artifacts awaiting human attention."
+summary: "An out-side door for digital artifacts awaiting human attention."
 status: evolving
+is-a: "[[out-side-door]]"
 ---
 
-A queue of digital artifacts awaiting human attention.
+An out-side door for digital artifacts awaiting human attention.
 
 ## Examples
 
+- A route that sends every digital artifact from a partner's SFTP door to review.
 - A digital artifact that arrived through an in-side door that no route names.
-- A digital artifact whose departure through an out-side door failed.
+- A digital artifact whose departure through another out-side door failed.
 
 ## Rationale
 
-In a warehouse this is the exceptions area, where goods that can't be routed wait for a person. Which conditions send a digital artifact to the attention-queue, and how a person releases it, are still open.
+In a warehouse this is the exceptions area, where goods that can't be routed wait for a person. As an out-side door it needs no special path. A route can name it, and it is the fallback when no route applies or a departure fails. A digital artifact a person releases arrives again through an in-side door. Which conditions use the fallback, and which in-side door a released digital artifact arrives through, are still open.

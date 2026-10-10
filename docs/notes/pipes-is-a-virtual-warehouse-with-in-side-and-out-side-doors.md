@@ -13,10 +13,10 @@ Pipes is modeled on a cross-dock warehouse. Goods arrive at in-side doors, a sor
 
 ## Parts
 
-- **In-side doors** are where digital artifacts arrive. The known kinds are FTP/SFTP servers, mailboxes, web upload endpoints, and watched folders.
+- **[[in-side-door|In-side doors]]** are where digital artifacts arrive. The known kinds are FTP/SFTP servers, mailboxes, web upload endpoints, and watched folders.
 - **In flight** is the state of a digital artifact between its arrival and its last departure. The plugin pipeline transforms or wraps in-flight digital artifacts.
 - **The [[sorter]]** diverts in-flight digital artifacts to out-side doors by the [[sort-plan]].
-- **Out-side doors** are where digital artifacts depart. The known kinds are folders and the [[attention-queue]], where digital artifacts wait for a person.
+- **[[out-side-door|Out-side doors]]** are where digital artifacts depart. The known kinds are folders and the [[attention-queue]], where digital artifacts wait for a person.
 
 ## Code shape
 
@@ -29,7 +29,7 @@ Cockburn separates driving ports, through which the outside world calls the appl
 
 - The in-side is a driving port: one trait through which every arriving digital artifact passes.
 - The out-side is a driven port: one trait through which every departing digital artifact passes.
-- Each kind of door, such as a watched folder or a mailbox, has an adapter for its side's port. Adding a kind of door means adding an adapter, and routing doesn't change.
+- Each kind of [[door]], such as a watched folder or a mailbox, has an adapter for its side's port. Adding a kind of door means adding an adapter, and routing doesn't change.
 
 Test doubles are adapters too, so pipes tests its core without servers.
 

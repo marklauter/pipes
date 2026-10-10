@@ -15,7 +15,7 @@ Pipes is modeled on a retail distribution warehouse, such as Macy's. One truck o
 
 - **In-side doors** are where files arrive. The known in-side doors are FTP/SFTP, email, web upload, and folder watch.
 - **The belt** moves each file from the door it arrived at to the out-side doors the route map assigns. The plugin pipeline sits on the belt and transforms or wraps a file in transit.
-- **Out-side doors** are where files leave. Writing to a folder is the only out-side door implied so far, by the outbound location in the route map. Others are not yet known.
+- **Out-side doors** are where files leave. Writing to a folder is the only out-side door known so far.
 
 ## Code shape
 
@@ -27,9 +27,16 @@ The warehouse terms map onto ports and adapters:
 
 The two ports are the first plug-in points. The plugin pipeline on the belt is the third.
 
-The route map is the belt's routing table. A row connects an in-side door and its location to an out-side door and its location. The build order is in [[pipes-builds-the-route-map-first-then-folder-and-email-intake]].
+## Route map
+
+The route map is the belt's routing table, and it connects doors, not folders. A location such as a folder path, a mailbox, or an SFTP host belongs to the door's adapter as one of its settings. The config therefore has two parts:
+
+- **Doors.** Each door has a name, a side (in or out), an adapter type, and that adapter's settings.
+- **Routes.** Each route connects an in-side door to an out-side door by name.
+
+The build order is in [[pipes-builds-the-route-map-first-then-folder-and-email-intake]].
 
 ## Open
 
 - Which out-side doors are needed beyond writing to a folder.
-- Whether one arriving file can leave through several out-side doors, as one truck of shoes fills many trucks. If so, a file can match several route map rows.
+- Whether one arriving file can leave through several out-side doors, as one truck of shoes fills many trucks. If so, fan-out is several routes from the same in-side door.

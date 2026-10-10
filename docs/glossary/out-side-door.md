@@ -17,4 +17,4 @@ A door through which digital artifacts depart.
 
 ## Rationale
 
-"Outbound", "sink", and "destination" lost to the warehouse's own word.
+"Outbound", "sink", and "destination" lost.

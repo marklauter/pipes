@@ -15,4 +15,4 @@ A named unit of digital content.
 
 ## Rationale
 
-"File" lost because an email attachment or an upload isn't always a file until pipes writes it somewhere. The name travels with the content, because out-side doors such as folder write need one.
+"File" lost, because an attachment or upload isn't a file until pipes writes one. The name travels with the content, because out-side doors such as a folder need one.

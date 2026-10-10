@@ -20,10 +20,10 @@ Pipes is modeled on a retail distribution warehouse, such as Macy's. One truck o
 
 ## Code shape
 
-Doors are implemented with Alistair Cockburn's Ports and Adapters pattern, also called hexagonal architecture. Port and adapter describe the build rather than the domain, so the glossary leaves them out.
+Doors are implemented with Alistair Cockburn's Ports and Adapters pattern, also called hexagonal architecture. These are build terms, so the glossary leaves them out.
 
-- A **port** is an interface of the application for one purposeful conversation with the world outside it. Cockburn writes that "a port identifies a purposeful conversation". The application defines the port in its own terms, so its logic never depends on a particular technology.
-- An **adapter** converts between a port and one external technology. Cockburn writes that for each external device "there is an adapter that converts the API definition to the signals needed by that device and vice versa".
+- A **port** is an interface of the application for one purposeful conversation with the world outside it. The application defines the port in its own terms, so its logic never depends on a technology.
+- An **adapter** converts between a port and one external technology, "the API definition to the signals needed by that device and vice versa".
 
 Cockburn separates driving ports, through which the outside world calls the application, from driven ports, through which the application calls the outside world. In pipes:
 
@@ -31,7 +31,7 @@ Cockburn separates driving ports, through which the outside world calls the appl
 - The out-side is a driven port: one trait through which every departing digital artifact passes.
 - Each kind of door, such as a watched folder or a mailbox, has an adapter for its side's port. Adding a kind of door means adding an adapter, and routing doesn't change.
 
-A port can have many adapters, and adding one leaves the application unchanged. Test doubles are adapters too, which is how pipes tests its core without servers.
+Test doubles are adapters too, so pipes tests its core without servers.
 
 The two ports are the first plugin points. The plugin pipeline is the third.
 
@@ -42,9 +42,9 @@ References:
 
 ## Sorter and sort plan
 
-The sorter diverts in-flight digital artifacts by the sort plan, whose routes connect doors by name. The config therefore has two parts:
+The sorter diverts in-flight digital artifacts by the sort plan, whose routes connect doors by name. The config has two parts:
 
 - **Doors.** Each door has a name, a side (in or out), an adapter type, and the location that identifies it, such as a folder path, a mailbox address, or an SFTP host.
-- **Routes.** Each route connects an in-side door to an out-side door by name. Fan-out, as one truck of shoes fills many trucks, is several routes from the same in-side door.
+- **Routes.** Each route connects an in-side door to an out-side door by name. Fan-out is several routes from the same in-side door.
 
 The build order is in [[roadmap]].

@@ -13,4 +13,4 @@ To leave pipes through an out-side door.
 
 ## Rationale
 
-Arrive, in-flight, and depart name a digital artifact's passage through pipes in order. "Deliver" and "dispatch" lost to the warehouse's word.
+"Deliver" and "dispatch" lost.

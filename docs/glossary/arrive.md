@@ -14,4 +14,4 @@ To enter pipes through an in-side door.
 
 ## Rationale
 
-Arrive, in-flight, and depart name a digital artifact's passage through pipes in order. "Receive" and "intake" lost to the warehouse's word.
+"Receive" and "intake" lost.

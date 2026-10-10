@@ -18,4 +18,4 @@ A door through which digital artifacts arrive.
 
 ## Rationale
 
-"Inbound" and "source" lost to the warehouse's own word.
+"Inbound" and "source" lost.

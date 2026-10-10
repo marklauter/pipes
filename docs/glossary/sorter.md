@@ -10,4 +10,4 @@ A part of pipes for diverting in-flight digital artifacts to out-side doors by a
 
 ## Rationale
 
-The term comes from warehouse sortation, where a sorter's shoes push boxes onto divert lines by the sort plan its control system loads. The sorter is the actor and the sort plan is the data it applies, so they stay separate terms. Sending a digital artifact with no route, or with a failed departure, to the [[attention-queue]] is also the sorter's diversion. "Belt" and "kicker" stay out of the glossary as mechanism.
+From warehouse sortation, where a sorter's shoes push boxes onto divert lines by the sort plan loaded into it. The sorter is the actor and the sort plan the data it applies. Sending a digital artifact with no route, or a failed departure, to the [[attention-queue]] is also a diversion. "Belt" and "kicker" are mechanism and stay out.

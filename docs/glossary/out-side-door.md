@@ -13,7 +13,7 @@ A door through which digital artifacts depart.
 ## Examples
 
 - The `accounting` folder.
-- A partner's `inbound` folder.
+- A partner's `drop` folder.
 
 ## Rationale
 

@@ -1,11 +1,11 @@
 ---
 title: in-flight
 type: definition
-summary: "The state of a file between its receipt at an in-side door and its delivery through every out-side door its routes name."
+summary: "The state of a file between its arrival at an in-side door and its departure through every out-side door its routes name."
 status: evolving
 ---
 
-The state of a file between its receipt at an in-side door and its delivery through every out-side door its routes name.
+The state of a file between its arrival at an in-side door and its departure through every out-side door its routes name.
 
 ## Examples
 

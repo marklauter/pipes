@@ -11,7 +11,7 @@ A connection between pipes and an external system, for passing files across the 
 
 - A watched folder that files are dropped into.
 - An IMAP mailbox whose attachments pipes collects.
-- A folder that pipes writes delivered files to.
+- A folder that departing files are written to.
 
 ## Rationale
 

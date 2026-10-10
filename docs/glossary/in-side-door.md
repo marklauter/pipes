@@ -1,14 +1,14 @@
 ---
 title: in-side door
 type: definition
-summary: "A door for receiving files into pipes."
+summary: "A door for files to arrive through."
 status: evolving
 is-a: "[[door]]"
 disjoint-with:
   - "[[out-side-door]]"
 ---
 
-A door for receiving files into pipes.
+A door for files to arrive through.
 
 ## Examples
 

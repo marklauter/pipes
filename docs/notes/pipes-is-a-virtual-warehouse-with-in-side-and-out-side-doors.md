@@ -14,7 +14,7 @@ Pipes is modeled on a retail distribution warehouse, such as Macy's. One truck o
 ## Parts
 
 - **In-side doors** are where files arrive. The known in-side doors are FTP/SFTP, email, web upload, and folder watch.
-- **In flight** is the state of a file between the door that received it and the out-side doors the route map assigns. The plugin pipeline transforms or wraps in-flight files.
+- **In flight** is the state of a file between the door it arrived through and the out-side doors the route map assigns. The plugin pipeline transforms or wraps in-flight files.
 - **Out-side doors** are where files leave. Writing to a folder is the only out-side door known so far.
 
 ## Code shape

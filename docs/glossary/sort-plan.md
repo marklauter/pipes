@@ -1,5 +1,5 @@
 ---
-title: route map
+title: sort plan
 type: definition
 summary: "A set of routes, for steering in-flight digital artifacts."
 status: evolving
@@ -10,4 +10,4 @@ A set of routes, for steering in-flight digital artifacts.
 
 ## Rationale
 
-"Map" was the first word used for it. "Routing table" means the same thing but sounds like networking.
+"Sort plan" is the warehouse's name for the routing a [[sorter]] applies. "Map", "route map" and "routing table" lost.

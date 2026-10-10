@@ -1,18 +1,18 @@
 ---
 title: door
 type: definition
-summary: "A connection between pipes and an external system, for passing digital artifacts across the pipes boundary."
+summary: "A delivery mechanism for passing digital artifacts between pipes and an external system."
 status: evolving
 ---
 
-A connection between pipes and an external system, for passing digital artifacts across the pipes boundary.
+A delivery mechanism for passing digital artifacts between pipes and an external system.
 
 ## Examples
 
-- A folder-watch door on the `scans` folder.
-- An email door on the `invoices` mailbox.
-- A folder-write door to the `accounting` folder.
+- The `scans` folder.
+- The `invoices` mailbox.
+- A partner's SFTP server.
 
 ## Rationale
 
-The term comes from a distribution warehouse, where trucks load and unload at doors. "Dock" lost. A door is implemented by an [[adapter]], and each side of pipes is a [[port]]. Those are the architecture terms, and door stays the domain term so the two vocabularies don't collide.
+The term comes from a distribution warehouse, where trucks load and unload at doors. "Dock" lost. "Connection" lost, because the folder or mailbox is itself the door. A folder counts because pipes can watch it, as in the outbox pattern. Doors are implemented with hexagonal architecture, as [[pipes-is-a-virtual-warehouse-with-in-side-and-out-side-doors]] describes.

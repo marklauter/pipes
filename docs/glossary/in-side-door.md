@@ -12,9 +12,9 @@ A door through which digital artifacts arrive.
 
 ## Examples
 
-- A folder-watch door on the `scans` folder.
-- An email door on the `invoices` mailbox.
-- A web upload door.
+- The `scans` folder.
+- The `invoices` mailbox.
+- A web upload endpoint.
 
 ## Rationale
 

@@ -1,7 +1,7 @@
 ---
 title: Roadmap
 type: note
-summary: "Build order: the core (ports, route map, attention-queue fallback), folder doors, email door, optional native FTP/SFTP, then the plugin pipeline."
+summary: "Build order: the core (ports, sorter, sort plan, attention-queue fallback), folder doors, email door, optional native FTP/SFTP, then the plugin pipeline."
 tags: [roadmap]
 created: 2026-10-10
 status: evolving
@@ -9,14 +9,14 @@ status: evolving
 
 # Roadmap
 
-Pipes routes digital artifacts between external systems. Digital artifacts arrive through in-side doors (FTP/SFTP, email, web upload, folder watch), are in flight while the route map steers them, and depart through out-side doors. Every door plugs into the same core, so the core comes first and the doors follow in order of complexity. The model is in [[pipes-is-a-virtual-warehouse-with-in-side-and-out-side-doors]], and the terms are in `docs/glossary/`.
+Pipes routes digital artifacts between external systems. Digital artifacts arrive through in-side doors (FTP/SFTP, email, web upload, folder watch), are in flight while the sorter steers them by the sort plan, and depart through out-side doors. Every door plugs into the same core, so the core comes first and the doors follow in order of complexity. The model is in [[pipes-is-a-virtual-warehouse-with-in-side-and-out-side-doors]], and the terms are in `docs/glossary/`.
 
 ## Order
 
 1. **Core.** Everything a door plugs into, as pure logic with no I/O, so the coverage and mutation gates test it fully:
    - The in-side port and the out-side port.
    - The digital artifact as it moves in flight, carrying where it arrived.
-   - The config: the doors, each with its adapter type and settings, and the route map between them. A parser validates it and reports where each bad entry is.
+   - The config: the doors, each with its adapter type and settings, and the sort plan between them. A parser validates it and reports where each bad entry is.
    - Fan-out: one digital artifact departs through every out-side door its routes name.
    - The fallback: a digital artifact with no route, or whose departure failed, departs to the [[attention-queue]].
 2. **Folder doors and the first runnable service.** A folder-watch in-side door, built on the `notify` crate, and a folder-write out-side door. The attention-queue starts as a folder-write door. A service binary loads the config and runs the doors. FTP/SFTP and web upload use the folder-watch door at first: a standard server (vsftpd, OpenSSH SFTP) or the upload handler writes into the watched folder. A file arrives only after its writer has finished with it.

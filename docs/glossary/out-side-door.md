@@ -13,7 +13,7 @@ A door through which digital artifacts depart.
 ## Examples
 
 - The `accounting` folder.
-- A partner's SFTP server.
+- A partner's `inbound` folder.
 
 ## Rationale
 

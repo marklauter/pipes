@@ -13,7 +13,7 @@ Pipes is modeled on a cross-dock warehouse. Goods arrive at in-side doors, a sor
 
 ## Parts
 
-- **In-side doors** are where digital artifacts arrive. The known kinds are FTP/SFTP servers, mailboxes, web upload, and watched folders.
+- **In-side doors** are where digital artifacts arrive. The known kinds are FTP/SFTP servers, mailboxes, web upload endpoints, and watched folders.
 - **In flight** is the state of a digital artifact between its arrival and its last departure. The plugin pipeline transforms or wraps in-flight digital artifacts.
 - **The [[sorter]]** diverts in-flight digital artifacts to out-side doors by the [[sort-plan]].
 - **Out-side doors** are where digital artifacts depart. The known kinds are folders and the [[attention-queue]], where digital artifacts wait for a person.
@@ -23,7 +23,7 @@ Pipes is modeled on a cross-dock warehouse. Goods arrive at in-side doors, a sor
 Doors are implemented with Alistair Cockburn's Ports and Adapters pattern, also called hexagonal architecture. These are build terms, so the glossary leaves them out.
 
 - A **port** is an interface of the application for one purposeful conversation with the world outside it. The application defines the port in its own terms, so its logic never depends on a technology.
-- An **adapter** converts between a port and one external technology, "the API definition to the signals needed by that device and vice versa".
+- An **adapter** converts between a port and one external technology.
 
 Cockburn separates driving ports, through which the outside world calls the application, from driven ports, through which the application calls the outside world. In pipes:
 

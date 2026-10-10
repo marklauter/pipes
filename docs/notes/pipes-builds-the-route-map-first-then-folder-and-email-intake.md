@@ -9,7 +9,7 @@ status: evolving
 
 # Pipes builds the route map first, then folder and email intake
 
-Pipes watches for incoming files, tags them, and moves each one to a destination chosen by a route map. Files arrive by three routes: FTP/SFTP, email, and web upload. Every route hands files to the same router, so the router comes first and the intake routes follow in order of complexity.
+Pipes watches for incoming files, tags them, and moves each one to a destination chosen by a route map. Files arrive by three routes: FTP/SFTP, email, and web upload. Every route hands files to the same router, so the router comes first and the intake routes follow in order of complexity. The model behind this is in [[pipes-is-a-virtual-warehouse-with-in-side-and-out-side-doors]].
 
 ## Order
 

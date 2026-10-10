@@ -46,7 +46,7 @@ Ruled out:
 - `lettre`: sends test mail over SMTP in integration tests.
 - `testcontainers`: starts GreenMail from inside tests.
 
-## Open
+## Open questions
 
 - Whether to support POP3 at all. IMAP covers the known cases.
 - Where mailbox credentials and OAuth2 tokens are stored.

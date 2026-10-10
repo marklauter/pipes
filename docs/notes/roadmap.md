@@ -25,7 +25,7 @@ Every door plugs into the same core, so the core comes first and the doors follo
 4. **Native FTP/SFTP doors (optional).** Pipes runs its own FTP or SFTP server, so uploads arrive with no intermediate folder. Build these only if an external server proves inadequate.
 5. **Plugin pipeline.** Plugin steps that transform an in-flight digital artifact or wrap it in an envelope.
 
-## Open
+## Open questions
 
 - What a tag is: metadata carried with the digital artifact, a change to its name, or a field in an envelope. The answer may fold tagging into the plugin pipeline.
 - The config format, and a term for the config. CSV fits routes, but door settings differ by adapter type and may need a nested format such as TOML.

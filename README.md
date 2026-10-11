@@ -1,17 +1,5 @@
 # pipes
 
-Pipes is a service for routing digital artifacts between external systems. It follows the cross-docking model: digital artifacts pass straight through and are not stored. Digital artifacts arrive through in-side doors such as FTP/SFTP servers, mailboxes, web upload endpoints, and watched folders. The sorter sends each one, by the sort plan, to depart through one or more out-side doors. Digital artifacts that need a person go to an attention-queue.
+Pipes is a service for routing digital artifacts between external systems. It follows the cross-docking model: digital artifacts pass straight through and are not stored. Digital artifacts arrive through in-side doors such as FTP/SFTP servers, mailboxes, web upload endpoints, and watched folders. The sorter sends each one, by the sort plan, to depart through one or more out-side doors. Digital artifacts that need a person go to an attention-queue. Each state change emits a structured event, which a UI can tap to show live activity.
 
-The build order is in [docs/notes/roadmap.md](docs/notes/roadmap.md), and the terms are defined in [docs/glossary](docs/glossary).
-
-## Mail testing
-
-`scripts/greenmail.sh up` starts a GreenMail test mail server in Podman, with SMTP on port 3025 and IMAP on port 3143. `cargo run -p pipes --example mail_poc` then sends an email with an attachment and reads it back.
-
-## Development
-
-`rust-toolchain.toml` installs the stable toolchain with clippy, rustfmt and rust-analyzer. Enable the hooks once per clone. Before each commit they check formatting, lints, docs and tests; before each push, coverage and the dependency audit, as CI does. The push checks need `cargo-llvm-cov` and `cargo-audit`. Mutation testing of a branch's changes runs in CI only.
-
-```sh
-git config core.hooksPath .githooks
-```
+Pipes runs on Windows and Linux. The build order is in [docs/notes/roadmap.md](docs/notes/roadmap.md), and the terms are defined in [docs/glossary](docs/glossary).

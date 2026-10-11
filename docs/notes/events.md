@@ -17,7 +17,7 @@ Pipes writes one structured event each time a digital artifact changes state. Th
 | --- | --- | --- |
 | arrived | A digital artifact [[arrive]]s through an [[in-side-door]]. | in-side door |
 | sorted | The [[sorter]] matches the digital artifact against the [[sort-plan]]. | matched [[route]]s |
-| departed | A digital artifact [[depart]]s through an [[out-side-door]]. | out-side door, and a reason (no route or failed departure) when that door is the [[attention-queue]] |
+| departed | A digital artifact [[depart]]s through an [[out-side-door]]. | out-side door, route, and the failure when the door is a failure door |
 | departure failed | A departure through an out-side door fails. | out-side door, error |
 
 Every event carries a timestamp and the digital artifact's id and name.
@@ -49,8 +49,8 @@ The client's requirement picks the tier: an audit or regulatory mandate needs ti
 
 ## Open questions
 
-- Whether a tap replays history or sees only events after it connects. Replay could read from the log store, so pipes would still store nothing.
-- How a digital artifact gets its id.
-- Which tier the client requires.
-- Whether to add a Windows Event Log sink for the client's existing Windows monitoring.
-- How the event schema is versioned once a UI depends on it.
+1. Whether a tap replays history or sees only events after it connects. Replay could read from the log store, so pipes would still store nothing.
+2. How a digital artifact gets its id. The proposal is a UUIDv7 that the in-side door assigns on arrival, which sorts by arrival time.
+3. Which tier the client requires.
+4. Whether to add a Windows Event Log sink for the client's existing Windows monitoring.
+5. How the event schema is versioned once a UI depends on it.

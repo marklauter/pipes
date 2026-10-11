@@ -16,7 +16,7 @@ Every door plugs into the same core, so the core comes first and the doors follo
 1. **Core.** Everything a door plugs into, as pure logic with no I/O, so the coverage and mutation gates test it fully:
    - The in-side port and the out-side port.
    - The in-flight digital artifact, which records its in-side door.
-   - The config: the doors, each with its adapter type and the location that identifies it, and the sort plan between them. A parser validates it and reports where each bad entry is.
+   - The config: the in-side doors, the out-side doors and the sort plan, in three TOML files, as [[config]] describes. A parser validates it and reports where each bad entry is.
    - The sorter, which diverts each in-flight digital artifact by the sort plan:
      - Fan-out: one digital artifact departs through every out-side door its routes name.
      - The fallback: a digital artifact with no route, or whose departure failed, departs to the [[attention-queue]].
@@ -30,7 +30,6 @@ Every door plugs into the same core, so the core comes first and the doors follo
 ## Open questions
 
 - What a tag is: metadata carried with the digital artifact, a change to its name, or a field in an envelope. The answer may fold tagging into the plugin pipeline.
-- The config format, and a term for the config. CSV fits routes, but door settings differ by adapter type and may need a nested format such as TOML.
 - Fan-out with a partial failure: whether the attention-queue receives only the failed departure or the whole digital artifact.
 - How a person releases a digital artifact from the attention-queue, and through which in-side door it arrives again.
 - Which out-side doors are needed beyond folders and the attention-queue.

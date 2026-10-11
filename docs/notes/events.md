@@ -29,6 +29,8 @@ Events are `tracing` events, so each sink is a `tracing-subscriber` layer chosen
 - **JSON-lines file.** `tracing-appender` writes daily rolling files. This is the default on Windows, where pipes runs as a Windows service and has no stdout.
 - **stdout.** JSON lines for a container or a systemd unit on Linux, where the host collects them.
 
+Both sink writes are synchronous, so a slow disk or pipe stalls the thread that logs. A later enhancement wraps each sink in `tracing_appender::non_blocking`, which moves the writes to a background thread. Its buffer drops events when full by default, so the audit sinks set `lossy(false)`, which makes the logging thread wait instead.
+
 OpenTelemetry is left out until the client adopts an OTel backend or pipes splits into services whose traces need correlating. Adding it then is a `tracing-opentelemetry` layer, with no change at the call sites.
 
 ## Taps

@@ -40,6 +40,8 @@ path = 'C:\pipes\review'
 
 **`sort-plan.toml`** defines the [[sort-plan]]. The `attention-queue` key names the out-side door that receives each [[digital-artifact]] with no route or a failed departure. Each table is a route, with `from` naming an in-side door and `to` naming an out-side door. Several routes with the same `from` fan out a digital artifact to several out-side doors.
 
+A route matches on its in-side door alone. The door's adapter settings decide which digital artifacts arrive through it, such as a file name pattern or whether a folder-watch includes subfolders.
+
 ```toml
 attention-queue = "review"
 
@@ -62,7 +64,6 @@ The parser reports all errors in one pass, each with its file, line and column.
 
 ## Open questions
 
-1. Whether a route matches on anything beyond its in-side door, such as a file name pattern.
-2. Whether door names must be unique across both door files. The spec assumes yes.
-3. Whether the sort plan names the attention-queue with one key, as above. Steps will later need a failure destination of their own.
-4. Whether the parser rejects a cycle. An out-side door and an in-side door can share a location, which chains routes, and a chain can loop back to its start. A loop may be a valid mechanism, so the parser may allow it.
+1. Whether door names must be unique across both door files. The spec assumes yes.
+2. Whether the sort plan names the attention-queue with one key, as above. Steps will later need a failure destination of their own.
+3. Whether the parser rejects a cycle. An out-side door and an in-side door can share a location, which chains routes, and a chain can loop back to its start. A loop may be a valid mechanism, so the parser may allow it.

@@ -14,4 +14,4 @@ An operation on an in-flight digital artifact, for preparing it to depart throug
 
 ## Rationale
 
-A [[route]] runs its steps in order, so in fan-out each route prepares its own copy. A step ends in success, which passes the digital artifact on, or failure, which sends it to the [[attention-queue]] on a permanent fault or a transient fault past its retry limit. "Transformer" lost because a step can wrap without transforming. "Processor" is generic, "filter" suggests discarding, and "job" names a run.
+A [[route]] runs its steps in order, so in fan-out each route prepares its own copy. A step ends in success, which passes the digital artifact on, or failure, which sends it to the route's failure door on a permanent fault or a transient fault past its retry limit. "Transformer" lost because a step can wrap without transforming. "Processor" is generic, "filter" suggests discarding, and "job" names a run.

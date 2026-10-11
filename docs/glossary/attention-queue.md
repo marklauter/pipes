@@ -10,9 +10,9 @@ An out-side door for digital artifacts awaiting human attention.
 
 ## Examples
 
-- A `review` folder, where a person checks digital artifacts that no route names.
+- A `review` folder that routes name as their failure door, where a person checks each digital artifact that failed.
 - An issue-tracker queue, where each failed departure opens a ticket.
 
 ## Rationale
 
-The warehouse equivalent is the exceptions area, and the messaging equivalent is a dead-letter queue. A route can name it, and it is the fallback when no route applies or a departure fails. A released digital artifact arrives again through an in-side door.
+The warehouse equivalent is the exceptions area, and the messaging equivalent is a dead-letter queue. Pipes treats it as any other out-side door. A route names it, usually as its failure door, and its adapter tells people about what arrives, by notification, email or a failure count in a UI. A released digital artifact arrives again through an in-side door.

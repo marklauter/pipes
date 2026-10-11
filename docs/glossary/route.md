@@ -6,6 +6,7 @@ status: evolving
 has-a:
   - "[[in-side-door]]"
   - "[[out-side-door]]"
+  - "[[step]]"
 ---
 
 A pairing of an in-side door with an out-side door, for sending the digital artifacts that arrive through the first to depart through the second.
@@ -16,4 +17,4 @@ A pairing of an in-side door with an out-side door, for sending the digital arti
 
 ## Rationale
 
-A route names its doors. Fan-out is several routes that share an in-side door.
+A route names its doors and its ordered steps. Fan-out is several routes that share an in-side door.

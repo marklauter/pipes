@@ -64,4 +64,4 @@ The parser reports all errors in one pass, each with its file, line and column.
 
 1. Whether a route matches on anything beyond its in-side door, such as a file name pattern.
 2. Whether door names must be unique across both door files. The spec assumes yes.
-3. Whether the sort plan names the attention-queue with one key, as above. Transformers will later need a failure destination of their own.
+3. Whether the sort plan names the attention-queue with one key, as above. Steps will later need a failure destination of their own.

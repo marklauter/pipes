@@ -40,7 +40,7 @@ path = 'C:\pipes\review'
 
 **`sort-plan.toml`** defines the [[sort-plan]]. The `attention-queue` key names the out-side door that receives each [[digital-artifact]] with no route or a failed departure. Each table is a route, with `from` naming an in-side door and `to` naming an out-side door. Several routes with the same `from` fan out a digital artifact to several out-side doors.
 
-A route matches on its in-side door alone. The door's adapter settings decide which digital artifacts arrive through it, such as a file name pattern or whether a folder-watch includes subfolders.
+A route matches on its in-side door alone. The door's adapter design decides which digital artifacts arrive through it. For example, one folder adapter can watch every subfolder, and a file adapter can watch a single file.
 
 ```toml
 attention-queue = "review"

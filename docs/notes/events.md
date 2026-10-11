@@ -29,6 +29,8 @@ Events are `tracing` events, so each sink is a `tracing-subscriber` layer chosen
 - **JSON-lines file.** `tracing-appender` writes daily rolling files. This is the default on Windows, where pipes runs as a Windows service and has no stdout.
 - **stdout.** JSON lines for a container or a systemd unit on Linux, where the host collects them.
 
+OpenTelemetry is left out until the client adopts an OTel backend or pipes splits into services whose traces need correlating. Adding it then is a `tracing-opentelemetry` layer, with no change at the call sites.
+
 ## Taps
 
 A tap is a read-only subscriber to the event stream, such as a UI showing live activity. A later `tracing` layer forwards each event to a `tokio::sync::broadcast` channel, and the UI reads it over Server-Sent Events. A tap that falls behind loses events, and the sorter never waits for a tap.

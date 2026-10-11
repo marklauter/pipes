@@ -1,7 +1,7 @@
 ---
 title: Roadmap
 type: note
-summary: "Build order: the core (ports, sorter, sort plan, success and failure doors, events), folder doors and the service, mailbox doors, taps, optional native FTP/SFTP, then the plugin pipeline."
+summary: "Build order: the core (ports, sorter, sort plan, success and failure doors, events), folder doors and the service, mailbox doors, taps, optional native FTP/SFTP, then the plugin pipeline. Apache NiFi is the buy option."
 tags: [roadmap]
 created: 2026-10-10
 status: evolving
@@ -26,6 +26,22 @@ Every door plugs into the same core, so the core comes first and the doors follo
 4. **Taps.** A `tracing` layer forwards events to a broadcast channel, and an SSE endpoint serves them to a UI.
 5. **Native FTP/SFTP doors (optional).** Pipes runs its own FTP or SFTP server, so uploads arrive with no intermediate folder. Build these only if an external server proves inadequate.
 6. **Plugin pipeline.** Plugin [[step]]s that transform an in-flight digital artifact or wrap it in an envelope. A route runs its steps in order before departure. Each step has two exits: success, and failure to the route's failure door on a permanent fault or a transient fault that exceeds its retry limit.
+
+## Build vs buy
+
+Pipes implements patterns from Hohpe and Woolf's *Enterprise Integration Patterns*: a door is a channel adapter, a route is a message router, fan-out is a recipient list, a step is a filter in pipes and filters, and a failure door is a dead letter channel. Apache Camel, Microsoft BizTalk and managed file transfer products such as GoAnywhere and MOVEit implement the same patterns.
+
+[Apache NiFi](https://nifi.apache.org/) is the closest match, and it is free under the Apache License 2.0:
+
+- Its processors read and write folders, FTP/SFTP servers and IMAP mailboxes.
+- Each processor has success and failure outputs, which match a route's success and failure doors.
+- It includes processors for transformation, validation, evaluation and ETL, which cover step 6.
+- Its provenance records each file's lineage, which covers much of [[events]].
+- It runs natively on Windows with Java 21, and NiFi 2 accepts processors written in Python. C# or Rust code runs through `ExecuteStreamCommand` or an HTTP service.
+
+It differs from pipes in two ways. It copies every file into a content repository on disk, so files are stored, not passed straight through. Its flows are built in a web UI rather than kept as config files, and NiFi Registry versions them.
+
+The client has not yet chosen between building pipes and adopting NiFi.
 
 ## Open questions
 

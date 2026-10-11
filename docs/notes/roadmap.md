@@ -19,7 +19,7 @@ Every door plugs into the same core, so the core comes first and the doors follo
    - The config: the in-side doors, the out-side doors and the sort plan, in three TOML files, as [[config]] describes. A parser validates it and reports where each bad entry is.
    - The sorter, which diverts each in-flight digital artifact by the sort plan:
      - Fan-out: one digital artifact departs through every out-side door its routes name.
-     - Failure: a digital artifact whose departure failed departs through its route's failure door, such as an [[attention-queue]].
+     - Failure: a digital artifact whose step fails departs through its route's failure door, and one whose departure fails departs through that out-side door's failure door. Failure doors chain, and an [[attention-queue]] is a common last link.
    - The events: arrived, sorted, departed and departure failed, emitted through `tracing`, as [[events]] describes.
 2. **Folder doors and the first runnable service.** A folder-watch in-side door, built on the `notify` crate, and a folder-write out-side door. The first failure door is a folder-write door. A service binary loads the config, runs the doors, and runs as a Windows service or a Linux service. It writes events to a JSON-lines file sink and a stdout sink. FTP/SFTP and web upload use the folder-watch door at first: a standard server (vsftpd, OpenSSH SFTP) or the upload handler writes into the watched folder. A file arrives only after its writer has finished with it.
 3. **Mailbox doors.** The email adapter reads each mailbox over IMAP, and each attachment arrives as its own digital artifact. The design is in [[email-adapter-reads-imap-behind-a-trait-and-tests-against-greenmail]].

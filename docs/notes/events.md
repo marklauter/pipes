@@ -17,7 +17,7 @@ Pipes writes one structured event each time a digital artifact changes state. Th
 | --- | --- | --- |
 | arrived | A digital artifact [[arrive]]s through an [[in-side-door]]. | in-side door |
 | sorted | The [[sorter]] matches the digital artifact against the [[sort-plan]]. | matched [[route]]s |
-| departed | A digital artifact [[depart]]s through an [[out-side-door]]. | out-side door, route, and the failure when the door is the route's failure door |
+| departed | A digital artifact [[depart]]s through an [[out-side-door]]. | out-side door, route, and the failure when the door is a failure door |
 | departure failed | A departure through an out-side door fails. | out-side door, error |
 
 Every event carries a timestamp and the digital artifact's id and name.

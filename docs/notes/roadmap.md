@@ -1,7 +1,7 @@
 ---
 title: Roadmap
 type: note
-summary: "Build order: the core (ports, sorter, sort plan, success and failure doors, events), folder doors and the service, mailbox doors, taps, optional native FTP/SFTP, then the plugin pipeline. Apache NiFi is the buy option."
+summary: "Build order: the core (ports, sorter, sort plan, success and failure doors, events), folder doors and the service, the Git config door, mailbox doors, taps, optional native FTP/SFTP, then the plugin pipeline. Apache NiFi is the buy option."
 tags: [roadmap]
 created: 2026-10-10
 status: evolving
@@ -22,10 +22,11 @@ Every door plugs into the same core, so the core comes first and the doors follo
      - Failure: a digital artifact whose step fails departs through its route's failure door, and one whose departure fails departs through that out-side door's failure door. Failure doors chain, and an [[attention-queue]] is a common last link.
    - The events: arrived, sorted, departed and departure failed, emitted through `tracing`, as [[events]] describes.
 2. **Folder doors and the first runnable service.** A folder-watch in-side door, built on the `notify` crate, and a folder-write out-side door. The first failure door is a folder-write door. A service binary loads the config, runs the doors, and runs as a Windows service or a Linux service. It writes events to a JSON-lines file sink and a stdout sink. FTP/SFTP and web upload use the folder-watch door at first: a standard server (vsftpd, OpenSSH SFTP) or the upload handler writes into the watched folder. A file arrives only after its writer has finished with it.
-3. **Mailbox doors.** The email adapter reads each mailbox over IMAP, and each attachment arrives as its own digital artifact. The design is in [[email-adapter-reads-imap-behind-a-trait-and-tests-against-greenmail]].
-4. **Taps.** A `tracing` layer forwards events to a broadcast channel, and an SSE endpoint serves them to a UI.
-5. **Native FTP/SFTP doors (optional).** Pipes runs its own FTP or SFTP server, so uploads arrive with no intermediate folder. Build these only if an external server proves inadequate.
-6. **Plugin pipeline.** Plugin [[step]]s that transform an in-flight digital artifact or wrap it in an envelope. A route runs its steps in order before departure. Each step has two exits: success, and failure to the route's failure door on a permanent fault or a transient fault that exceeds its retry limit.
+3. **Git config door.** Pipes' own config arrives through a built-in Git in-side door, which polls one branch of a repository. Each commit that changes the config arrives as a digital artifact, and a route sends it to a built-in out-side door that validates and loads it. A config that fails validation departs through that route's failure door, and the previous config keeps running. A local bootstrap file names the repository and the branch.
+4. **Mailbox doors.** The email adapter reads each mailbox over IMAP, and each attachment arrives as its own digital artifact. The design is in [[email-adapter-reads-imap-behind-a-trait-and-tests-against-greenmail]].
+5. **Taps.** A `tracing` layer forwards events to a broadcast channel, and an SSE endpoint serves them to a UI.
+6. **Native FTP/SFTP doors (optional).** Pipes runs its own FTP or SFTP server, so uploads arrive with no intermediate folder. Build these only if an external server proves inadequate.
+7. **Plugin pipeline.** Plugin [[step]]s that transform an in-flight digital artifact or wrap it in an envelope. A route runs its steps in order before departure. Each step has two exits: success, and failure to the route's failure door on a permanent fault or a transient fault that exceeds its retry limit.
 
 ## Build vs buy
 
@@ -35,7 +36,7 @@ Pipes implements patterns from Hohpe and Woolf's *Enterprise Integration Pattern
 
 - Its processors read and write folders, FTP/SFTP servers and IMAP mailboxes.
 - Each processor has success and failure outputs, which match a route's success and failure doors.
-- It includes processors for transformation, validation, evaluation and ETL, which cover step 6.
+- It includes processors for transformation, validation, evaluation and ETL, which cover step 7.
 - Its provenance records each file's lineage, which covers much of [[events]].
 - It runs natively on Windows with Java 21, and NiFi 2 accepts processors written in Python. C# or Rust code runs through `ExecuteStreamCommand` or an HTTP service.
 
@@ -49,3 +50,4 @@ The client has not yet chosen between building pipes and adopting NiFi.
 2. How a person releases a digital artifact from the attention-queue, and through which in-side door it arrives again.
 3. Which out-side doors are needed beyond folders and the attention-queue.
 4. How the web upload endpoint and the tap SSE endpoint are hosted, whether they share a host, and whether they belong in this repo.
+5. How the Git config door authenticates to the repository.

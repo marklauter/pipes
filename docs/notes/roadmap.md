@@ -25,7 +25,7 @@ Every door plugs into the same core, so the core comes first and the doors follo
 3. **Mailbox doors.** The email adapter reads each mailbox over IMAP, and each attachment arrives as its own digital artifact. The design is in [[email-adapter-reads-imap-behind-a-trait-and-tests-against-greenmail]].
 4. **Taps.** A `tracing` layer forwards events to a broadcast channel, and an SSE endpoint serves them to a UI.
 5. **Native FTP/SFTP doors (optional).** Pipes runs its own FTP or SFTP server, so uploads arrive with no intermediate folder. Build these only if an external server proves inadequate.
-6. **Plugin pipeline.** Plugin steps that transform an in-flight digital artifact or wrap it in an envelope.
+6. **Plugin pipeline.** Plugin steps that transform an in-flight digital artifact or wrap it in an envelope. Each step has two exits: success, and failure to the attention-queue on a permanent fault or a transient fault that exceeds its retry limit.
 
 ## Open questions
 

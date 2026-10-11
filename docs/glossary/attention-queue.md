@@ -15,4 +15,4 @@ An out-side door for digital artifacts awaiting human attention.
 
 ## Rationale
 
-The warehouse equivalent is the exceptions area. A route can name it, and it is the fallback when no route applies or a departure fails. A released digital artifact arrives again through an in-side door.
+The warehouse equivalent is the exceptions area, and the messaging equivalent is a dead-letter queue. A route can name it, and it is the fallback when no route applies or a departure fails. A released digital artifact arrives again through an in-side door.

@@ -26,21 +26,23 @@ adapter = "folder-watch"
 path = 'C:\pipes\in\acme'
 ```
 
-**`out-side-doors.toml`** defines the [[out-side-door]]s, in the same form. It must define a door named `attention-queue`, which is the [[attention-queue]].
+**`out-side-doors.toml`** defines the [[out-side-door]]s, in the same form. An [[attention-queue]] is an out-side door like any other.
 
 ```toml
 [archive]
 adapter = "folder-write"
 path = 'C:\pipes\archive'
 
-[attention-queue]
+[review]
 adapter = "folder-write"
-path = 'C:\pipes\attention'
+path = 'C:\pipes\review'
 ```
 
-**`sort-plan.toml`** defines the [[sort-plan]]. Each table is a route, with `from` naming an in-side door and `to` naming an out-side door. Several routes with the same `from` fan out a [[digital-artifact]] to several out-side doors.
+**`sort-plan.toml`** defines the [[sort-plan]]. The `attention-queue` key names the out-side door that receives each [[digital-artifact]] with no route or a failed departure. Each table is a route, with `from` naming an in-side door and `to` naming an out-side door. Several routes with the same `from` fan out a digital artifact to several out-side doors.
 
 ```toml
+attention-queue = "review"
+
 [acme-to-archive]
 from = "acme"
 to = "archive"
@@ -54,15 +56,12 @@ The parser rejects the config if any of the following is true:
 - A table has a key its adapter type doesn't define, or is missing a key the adapter type requires.
 - An `adapter` value names an unknown adapter type.
 - A route's `from` names a door missing from `in-side-doors.toml`, or its `to` names a door missing from `out-side-doors.toml`.
-- `out-side-doors.toml` has no `attention-queue` door.
+- The `attention-queue` key is missing or names a door missing from `out-side-doors.toml`.
 
 The parser reports all errors in one pass, each with its file, line and column.
 
 ## Open questions
 
-1. Whether each file can become a folder of files, such as one in-side door per file.
-2. Whether a route matches on anything beyond its in-side door, such as a file name pattern.
-3. Whether a route names exactly one out-side door, so that fan-out is several routes sharing a `from`. The spec assumes yes, which matches [[route]].
-4. Whether `sort-plan.toml` names its tables directly, without a `routes.` prefix. The spec assumes yes.
-5. Whether `out-side-doors.toml` must define a door named `attention-queue`. The spec assumes yes.
-6. Whether door names must be unique across both door files. The spec assumes yes.
+1. Whether a route matches on anything beyond its in-side door, such as a file name pattern.
+2. Whether door names must be unique across both door files. The spec assumes yes.
+3. Whether the sort plan names the attention-queue with one key, as above. Transformers will later need a failure destination of their own.

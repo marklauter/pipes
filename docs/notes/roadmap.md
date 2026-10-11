@@ -39,7 +39,7 @@ Pipes implements patterns from Hohpe and Woolf's *Enterprise Integration Pattern
 - Its provenance records each file's lineage, which covers much of [[events]].
 - It runs natively on Windows with Java 21, and NiFi 2 accepts processors written in Python. C# or Rust code runs through `ExecuteStreamCommand` or an HTTP service.
 
-It differs from pipes in two ways. It copies every file into a content repository on disk, so files are stored, not passed straight through. Its flows are built in a web UI rather than kept as config files, and NiFi Registry versions them.
+It differs from pipes in two ways. It copies every file into a content repository on disk, so files are stored, not passed straight through. Its flows are JSON flow definitions rather than hand-written config files. They are built in a web UI or through the REST API, and NiFi 2 versions them in a Git repository.
 
 The client has not yet chosen between building pipes and adopting NiFi.
 

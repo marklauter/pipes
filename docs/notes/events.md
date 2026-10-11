@@ -49,8 +49,8 @@ The client's requirement picks the tier: an audit or regulatory mandate needs ti
 
 ## Open questions
 
-- Whether a tap replays history or sees only events after it connects. Replay could read from the log store, so pipes would still store nothing.
-- How a digital artifact gets its id.
-- Which tier the client requires.
-- Whether to add a Windows Event Log sink for the client's existing Windows monitoring.
-- How the event schema is versioned once a UI depends on it.
+1. Whether a tap replays history or sees only events after it connects. Replay could read from the log store, so pipes would still store nothing.
+2. How a digital artifact gets its id.
+3. Which tier the client requires.
+4. Whether to add a Windows Event Log sink for the client's existing Windows monitoring.
+5. How the event schema is versioned once a UI depends on it.

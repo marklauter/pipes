@@ -29,8 +29,8 @@ Every door plugs into the same core, so the core comes first and the doors follo
 
 ## Open questions
 
-- What a tag is: metadata carried with the digital artifact, a change to its name, or a field in an envelope. The answer may fold tagging into the plugin pipeline.
-- Fan-out with a partial failure: whether the attention-queue receives only the failed departure or the whole digital artifact.
-- How a person releases a digital artifact from the attention-queue, and through which in-side door it arrives again.
-- Which out-side doors are needed beyond folders and the attention-queue.
-- How the web upload endpoint and the tap SSE endpoint are hosted, whether they share a host, and whether they belong in this repo.
+1. What a tag is: metadata carried with the digital artifact, a change to its name, or a field in an envelope. The answer may fold tagging into the plugin pipeline.
+2. Fan-out with a partial failure: whether the attention-queue receives only the failed departure or the whole digital artifact.
+3. How a person releases a digital artifact from the attention-queue, and through which in-side door it arrives again.
+4. Which out-side doors are needed beyond folders and the attention-queue.
+5. How the web upload endpoint and the tap SSE endpoint are hosted, whether they share a host, and whether they belong in this repo.

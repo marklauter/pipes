@@ -60,5 +60,5 @@ The parser reports all errors in one pass, each with its file, line and column.
 
 ## Open questions
 
-- Whether each file can become a folder of files, such as one in-side door per file.
-- Whether a route matches on anything beyond its in-side door, such as a file name pattern.
+1. Whether each file can become a folder of files, such as one in-side door per file.
+2. Whether a route matches on anything beyond its in-side door, such as a file name pattern.

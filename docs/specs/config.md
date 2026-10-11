@@ -62,3 +62,7 @@ The parser reports all errors in one pass, each with its file, line and column.
 
 1. Whether each file can become a folder of files, such as one in-side door per file.
 2. Whether a route matches on anything beyond its in-side door, such as a file name pattern.
+3. Whether a route names exactly one out-side door, so that fan-out is several routes sharing a `from`. The spec assumes yes, which matches [[route]].
+4. Whether `sort-plan.toml` names its tables directly, without a `routes.` prefix. The spec assumes yes.
+5. Whether `out-side-doors.toml` must define a door named `attention-queue`. The spec assumes yes.
+6. Whether door names must be unique across both door files. The spec assumes yes.

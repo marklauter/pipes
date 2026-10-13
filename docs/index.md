@@ -17,6 +17,13 @@ Specs define how a part of pipes behaves. Implementation follows them.
 
 - [Config](specs/config.md): the three TOML files that define the in-side doors, the out-side doors, and the sort plan, and the rules that validate them.
 
+## Proofs of concept
+
+Proofs of concept test a door design against a real system before it is built into pipes. Each one is a Cargo example.
+
+- [Mail](../crates/pipes/examples/mail_poc.rs): sends an email with an attachment over SMTP, then reads it back over IMAP and lists its attachments. It runs against GreenMail, which `scripts/greenmail.sh up` starts. Run `cargo run -p pipes --example mail_poc [host]`.
+- [Git](../crates/pipes/examples/git_poc.rs): polls one branch of a local Git repository and prints each new commit as an arrival, with the files it changed. Run `cargo run -p pipes --example git_poc <repo> [branch] [seconds]`.
+
 ## Glossary
 
 The [glossary](glossary/) holds one file per term, such as door, route, and digital artifact. Notes and specs use each term only in its glossary meaning.

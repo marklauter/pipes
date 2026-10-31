@@ -10,5 +10,5 @@ async-imap = { version = "0.12.0", default-features = false, features = ["runtim
 futures = "0.3.34"
 gix = "0.90.0"
 lettre = { version = "0.11.23", default-features = false, features = ["builder", "smtp-transport", "tokio1"] }
-mail-parser = "0.11.9"
+mail-parser = "1.0.0"
 tokio = { version = "1.53.2", features = ["macros", "rt-multi-thread", "net", "time"] }
